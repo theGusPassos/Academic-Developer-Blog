@@ -2,6 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AcaDev.Model.IService;
+using AcaDev.Model.Services;
+using AcaDev.Repository.DbContexts;
+using AcaDev.Repository.Repositories;
+using AcaDev.Repository.Repositories.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -22,7 +27,16 @@ namespace AcaDev
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("Default");
+            AppDbDesign.ConnectionString = connectionString;
+            AppDbContext.ConnectionString = connectionString;
+
+            services.AddDbContext<AppDbContext>();
+
             services.AddMvc();
+
+            services.AddScoped<IPostsRepository, PostsRepository>();
+            services.AddScoped<IPostsService, PostsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
