@@ -10,9 +10,9 @@ namespace AcaDev.Controllers
     public class BaseController<T, S> : Controller
         where S : IService<T>
     {
-        protected readonly IService<T> service;
+        protected readonly S service;
 
-        public BaseController(IService<T> service)
+        public BaseController(S service)
         {
             this.service = service;
         }

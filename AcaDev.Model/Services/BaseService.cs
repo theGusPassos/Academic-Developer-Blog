@@ -8,11 +8,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AcaDev.Model.Services
 {
-    public class BaseService<T> : IService<T>
+    public class BaseService<T, R> : IService<T>
+        where R : IRepository<T>
     {
-        protected readonly IRepository<T> repository;
+        protected readonly R repository;
 
-        public BaseService(IRepository<T> repository)
+        public BaseService(R repository)
         {
             this.repository = repository;
         }

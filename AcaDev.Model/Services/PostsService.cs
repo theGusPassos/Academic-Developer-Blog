@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AcaDev.Model.Services
 {
-    public class PostsService : BaseService<Post>, IPostsService
+    public class PostsService : BaseService<Post, IPostsRepository>, IPostsService
     {   
         public PostsService(IPostsRepository repository) : base(repository)
         {
@@ -14,7 +14,13 @@ namespace AcaDev.Model.Services
 
         public async Task<Result<Post>> GetWithComments(int id)
         {
-            return null;
+            var post = await repository.GetWithComments(id);
+            if (post != null)
+            {
+                return Result.Ok(post);
+            }
+
+            return Result.Fail<Post>("Entity not found");
         }
     }
 }
