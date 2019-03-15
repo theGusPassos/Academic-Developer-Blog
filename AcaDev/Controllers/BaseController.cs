@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace AcaDev.Controllers
 {
     [Route("api/[controller]/[action]")]
+    [Produces("application/json")]
     public class BaseController<T, S> : Controller
         where S : IService<T>
     {
@@ -33,7 +34,7 @@ namespace AcaDev.Controllers
                     return StatusCode((int)result.Code, ErrorResponseDto.Create((int)result.Code, result.Error));
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return StatusCode(500, ErrorResponseDto.Create(500, "internal server error"));
             }
