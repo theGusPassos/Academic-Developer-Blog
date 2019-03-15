@@ -17,8 +17,8 @@ namespace AcaDev.Repository.Repositories
         }
 
         public Task Add(T entity) => dbContext.Set<T>().AddAsync(entity);
-        public Task<T> GetById(int id) => dbContext.Set<T>().FindAsync(id);
-        public IEnumerable<T> GetAll() => dbContext.Set<T>().AsEnumerable();
+        public virtual Task<T> GetById(int id) => dbContext.Set<T>().FindAsync(id);
+        public virtual IEnumerable<T> GetAll() => dbContext.Set<T>().AsEnumerable();
         public void Delete(T entity) => dbContext.Remove(entity);
         public Task Save() => dbContext.SaveChangesAsync();
     }
