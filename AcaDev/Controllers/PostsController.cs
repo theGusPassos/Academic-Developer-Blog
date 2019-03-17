@@ -34,5 +34,27 @@ namespace AcaDev.Controllers
                 return StatusCode(500, ErrorResponseDto.Create(500, "internal server error"));
             }
         }
+
+        [HttpGet]
+        [Route("{tagId}")]
+        public async Task<IActionResult> GetByTag(int tagId)
+        {
+            try
+            {
+                var result = await service.GetByTag(tagId);
+                if (result)
+                {
+                    return Ok(result.Value);
+                }
+                else
+                {
+                    return StatusCode((int)result.Code, ErrorResponseDto.Create((int)result.Code, result.Error));
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, ErrorResponseDto.Create(500, "internal server error"));
+            }
+        }
     }
 }
