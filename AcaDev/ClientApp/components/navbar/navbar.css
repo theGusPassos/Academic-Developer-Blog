@@ -1,6 +1,6 @@
 ﻿
 .top-menu {
-    background-color: #d01f90;
+    background-color: var(--main-color);
     display: grid;
     grid-template-columns: auto 10vw;
     padding: 1em 2em;
@@ -43,8 +43,8 @@
     max-height: 0;
     height: auto;
     width: 100%;
-    background-color: #fff;
-    border-bottom: 1px solid #d01f90;
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--main-color);
     transition: all .5s ease-in-out;
 }
 
@@ -62,12 +62,12 @@
         margin: 3% 0;
     }
 
-    .navigation ul li a {
-        font-weight: bold;
-        text-decoration: none;
-        color: #d01f90;
-    }
-
-        .navigation ul li a:hover {
-            color: #800754;
+        .navigation ul li a {
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--main-color);
         }
+
+            .navigation ul li a:hover {
+                color: var(--main-color-hover);
+            }
