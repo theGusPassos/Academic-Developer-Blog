@@ -1,0 +1,24 @@
+﻿<template>
+    <div>
+        <div class="top-menu">
+            <div class="brand-div">
+                <span id="brand-name">Academic Developer</span>
+                <span id="brand-subtitle">= set(development).intersect(academics)</span>
+            </div>
+            <div id="hamburger-icon" @click="onHamburgerClick">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <nav v-bind:class="{ shownavigation: showMobileNav }" class="navigation">
+            <ul>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </div>
+</template>
+
+<script src="./navbar.ts"></script>
+<style src="./navbar.css"></style>
