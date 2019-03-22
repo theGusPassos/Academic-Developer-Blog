@@ -17,12 +17,12 @@
 }
 
 #brand-name {
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: bold;
 }
 
 #brand-subtitle {
-    font-size: 0.65em;
+    font-size: 0.7em;
 }
 
 #hamburger-icon {
@@ -67,10 +67,11 @@
     }
 
     .navigation ul li {
-        margin: 3% 0;
+        margin: 5% 0;
     }
 
         .navigation ul li a {
+            font-size: 1.1em;
             font-weight: bold;
             text-decoration: none;
             color: var(--main-color);
@@ -91,6 +92,14 @@
     .top-menu {
         padding: 0;
         width: 60%;
+    }
+
+    #brand-name {
+        font-size: 1.6em;
+    }
+
+    #brand-subtitle {
+        font-size: 0.9em;
     }
 
     #hamburger-icon {
@@ -121,6 +130,7 @@
             }
 
             .navigation ul li a {
+                font-size: 1.3em;
                 color: #fff;
             }
 
