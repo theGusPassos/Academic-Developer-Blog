@@ -30,6 +30,10 @@
     min-width: 40px;
     cursor: pointer;
     margin: auto;
+    color: black;
+    padding: 0;
+    border: none !important;
+    background-color: var(--main-color);
 }
 
     #hamburger-icon span {
