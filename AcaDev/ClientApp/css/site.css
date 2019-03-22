@@ -4,6 +4,14 @@
     --background-color: #fff;
     --main-color: #d01f90;
     --main-color-hover: #800754;
+    --text-main-color: #d01f90;
+}
+
+.dark-theme {
+    --background-color: #141414;
+    --main-color: #000;
+    --main-color-hover: #ccc;
+    --text-main-color: #fff;
 }
 
 html, body, #app-root {
