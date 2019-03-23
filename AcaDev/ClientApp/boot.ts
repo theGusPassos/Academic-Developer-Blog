@@ -4,7 +4,8 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 const routes = [
-    { path: '/', component: require('./components/blog/blog.vue.html') }
+    { path: '/', component: require('./components/blog/blog.vue.html') },
+    { path: '/about', component: require('./components/about/about.vue.html') }
 ];
 
 new Vue({

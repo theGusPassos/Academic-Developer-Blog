@@ -1,0 +1,29 @@
+﻿
+.about-background {
+    padding: 5%;
+}
+
+h1 {
+    font-size: 2em;
+    color: var(--second-color);
+    margin-top: 5%;
+}
+
+section:last-child {
+    margin-top: 20%;
+}
+
+.content {
+    font-size: 0.9em;
+    margin-top: 10%;
+}
+
+@media (min-width: 766px) {
+    section:last-child {
+        margin-top: 5%;
+    }
+
+    .content {
+        margin-top: 5%;
+    }
+}
