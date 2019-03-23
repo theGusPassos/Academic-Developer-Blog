@@ -23,6 +23,15 @@
         <article class="post-content">
             {{ post.content }}
         </article>
+
+        <section v-if="post.comments && post.comments.length > 0">
+            <span class="comment-count">{{ post.comments.length }} Comment{{ post.comments.length > 1 ? 's' : '' }}</span>
+
+            <comment-component 
+                               v-for="comment in post.comments"
+                               v-bind:comment="comment"
+                               />
+        </section>
     </div>
 </template>
 

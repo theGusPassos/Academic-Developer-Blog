@@ -1,6 +1,6 @@
 ﻿
 .post-body {
-    margin: 10% 5%;
+    margin: 5% 5%;
     padding-top: 5%;
 }
 
@@ -53,6 +53,11 @@
 .post-content {
     margin: 6% 0 12% 0;
     font-size: 0.9em;
+}
+
+.comment-count {
+    font-size: 0.85em;
+    color: var(--second-color);
 }
 
 @media (min-width: 766px) {
