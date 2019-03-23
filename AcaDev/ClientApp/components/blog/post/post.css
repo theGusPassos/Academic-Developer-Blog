@@ -1,6 +1,7 @@
 ﻿
 .post-body {
-    margin-top: 5%;
+    margin: 5% 5%;
+    padding-top: 5%;
 }
 
 .post-header-container {
@@ -54,7 +55,16 @@
     font-size: 0.9em;
 }
 
+.comment-count {
+    font-size: 0.85em;
+    color: var(--second-color);
+}
+
 @media (min-width: 766px) {
+    .post-body {
+        margin: 0 15%;
+    }
+    
     .post-title {
         font-size: 2em;
         max-width: 500px;

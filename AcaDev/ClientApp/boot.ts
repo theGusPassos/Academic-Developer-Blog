@@ -5,7 +5,8 @@ Vue.use(VueRouter);
 
 const routes = [
     { path: '/', component: require('./components/blog/blog.vue.html') },
-    { path: '/about', component: require('./components/about/about.vue.html') }
+    { path: '/about', component: require('./components/about/about.vue.html') },
+    { path: '/post/:title', component: require('./components/blog/post-view/post-view.vue.html') }
 ];
 
 new Vue({
