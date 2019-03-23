@@ -1,0 +1,55 @@
+﻿
+.post-body {
+    margin-top: 5%;
+}
+
+.post-header-container {
+    display: flex;
+}
+
+.post-header {
+    display: inline-block;
+    margin: auto;
+}
+
+.post-title {
+    font-size: 1.32em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.post-info {
+    font-weight: bold;
+    font-size: 0.75em;
+    margin-top: 3%;
+}
+
+    .post-info span:last-child {
+        float: right;
+    }
+
+.post-tags-container {
+    margin-top: 5%;
+    display: flex;
+}
+
+.post-tags {
+    display: flex;
+    margin: auto;
+}
+    .post-tags div {
+        background-color: var(--background-color);
+        color: var(--second-color);
+        border: 1px solid var(--second-color);
+        border-radius: 20px;
+        margin: 0 5px;
+    }
+
+    .post-tags div span {
+        margin: 10px;
+    }
+
+.post-content {
+    margin: 10% 0;
+    font-size: 0.9em;
+}

@@ -1,0 +1,11 @@
+﻿
+.blog-body {
+    margin: 0 5%;
+    padding-top: 5%;
+}
+
+@media (min-width: 766px) {
+    .blog-body {
+        margin: 0 15%;
+    }
+}

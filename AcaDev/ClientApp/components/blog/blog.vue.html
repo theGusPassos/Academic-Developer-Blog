@@ -1,7 +1,10 @@
 ﻿<template>
-    <div>
-        teste
+    <div class="blog-body">
+        <post-component 
+            v-for="post in posts"
+            v-bind:post="post" />
     </div>
 </template>
 
 <script src="./blog.ts"></script>
+<style src="./blog.css"></style>
