@@ -17,3 +17,13 @@ section:last-child {
     font-size: 0.9em;
     margin-top: 10%;
 }
+
+@media (min-width: 766px) {
+    section:last-child {
+        margin-top: 5%;
+    }
+
+    .content {
+        margin-top: 5%;
+    }
+}
