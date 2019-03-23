@@ -50,6 +50,26 @@
     }
 
 .post-content {
-    margin: 10% 0;
+    margin: 6% 0 12% 0;
     font-size: 0.9em;
+}
+
+@media (min-width: 766px) {
+    .post-title {
+        font-size: 2em;
+        max-width: 500px;
+    }
+
+    .post-info {
+        font-size: 1em;
+    }
+
+    .post-tags-container {
+        margin-top: 2%;
+        font-size: 1.2em;
+    }
+
+    .post-content {
+        margin: 5% 0 7% 0;   
+    }
 }
