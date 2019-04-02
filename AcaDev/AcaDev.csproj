@@ -16,8 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AcaDev.Model\AcaDev.Model.csproj" />
-    <ProjectReference Include="..\AcaDev.Repository\AcaDev.Repository.csproj" />
+    <ProjectReference Include="..\AcaDev.Application\AcaDev.Application.csproj" />
+    <ProjectReference Include="..\AcaDev.Domain\AcaDev.Domain.csproj" />
+    <ProjectReference Include="..\AcaDev.Persistance\AcaDev.Persistance.csproj" />
+    <ProjectReference Include="..\AcaDev.Shared\AcaDev.Shared.csproj" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

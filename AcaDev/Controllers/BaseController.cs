@@ -1,64 +1,32 @@
-﻿using AcaDev.Model.IService;
-using AcaDev.Model.ResponsesDto;
+﻿using AcaDev.Persistance.DbContexts;
 using Microsoft.AspNetCore.Mvc;
-using System;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AcaDev.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     [Produces("application/json")]
-    public class BaseController<T, S> : Controller
-        where S : IService<T>
+    public class BaseController<TEntity> : Controller 
+        where TEntity : class
     {
-        protected readonly S service;
+        protected AppDbContext dbContext;
 
-        public BaseController(S service)
+        public BaseController(AppDbContext dbContext)
         {
-            this.service = service;
+            this.dbContext = dbContext;
         }
 
         [HttpGet]
         [Route("{id}")]
-        public virtual async Task<IActionResult> Get(int id)
-        {
-            try
-            {
-                var result = await service.GetById(id);
-                if (result)
-                {
-                    return Ok(result.Value);
-                }
-                else
-                {
-                    return StatusCode((int)result.Code, ErrorResponseDto.Create((int)result.Code, result.Error));
-                }
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, ErrorResponseDto.Create(500, "internal server error"));
-            }
-        }
+        public virtual Task<TEntity> Get(int id) =>
+            dbContext.Set<TEntity>().FindAsync(id);
+
 
         [HttpGet]
-        public async Task<IActionResult> All()
-        {
-            try
-            {
-                var result = await service.GetAll();
-                if (result)
-                {
-                    return Ok(result.Value);
-                }
-                else
-                {
-                    return StatusCode((int)result.Code, ErrorResponseDto.Create((int)result.Code, result.Error));
-                }
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, ErrorResponseDto.Create(500, "internal server error"));
-            }
-        }
+        public Task<List<TEntity>> All() =>
+            dbContext.Set<TEntity>().AsQueryable().ToListAsync();
     }
 }
