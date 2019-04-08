@@ -29,7 +29,7 @@ namespace AcaDev.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> All()
+        public virtual async Task<IActionResult> All()
         {
             var entities = await dbContext.Set<TEntity>().AsQueryable().ToListAsync();
             if (entities == null || entities.Count == 0) return NotFound();
