@@ -1,10 +1,10 @@
 ﻿using AcaDev.Attribute;
 using AcaDev.Domain.Entities;
+using AcaDev.Dtos;
 using AcaDev.Persistance.DbContexts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AcaDev.Controllers
@@ -15,13 +15,35 @@ namespace AcaDev.Controllers
         { 
         }
 
+        public override async Task<IActionResult> All()
+        {
+            var entities = await dbContext.Post
+                .Include(a => a.Author)
+                .Include(a => a.PostTags).ThenInclude(a => a.Tag)
+                .Select(a => new PostDto
+                {
+                    Title = a.Title,
+                    Author = a.Author.Name,
+                    Content = a.Content,
+                    PublishDate = a.PublishDate,
+                    Tags = a.PostTags.Select(b => b.Tag.Name).ToList()
+                })
+                .ToArrayAsync();
+
+            if (entities == null || entities.Length == 0) return NotFound();
+
+            return Ok(entities);
+        }
+
         [HttpGet]
         [ExactQueryParam("title")]
         public async Task<IActionResult> GetByTitle([FromQuery] string title)
         {
             var post = await dbContext.Post
-                // Removes dots to avoid problems in the URL generation
-                .Where(a => a.Title.ToLower().Replace(".", string.Empty).Replace(" ", string.Empty) == title.ToLower())
+                .Where(a => a.Title.ToLower()
+                    // Removes dots to avoid problems in the URL generation
+                    .Replace(".", string.Empty)
+                    .Replace(" ", string.Empty) == title.ToLower())
                 .FirstOrDefaultAsync();
 
             if (post == null) return NotFound();
