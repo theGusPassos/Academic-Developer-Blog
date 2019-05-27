@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcaDev.Persistance", "AcaDe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcaDev.Domain", "AcaDev.Domain\AcaDev.Domain.csproj", "{7D8353FC-5F88-43D5-924A-A3E2CD8E6228}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{BDD9100B-8E72-401D-9D42-ABF0F3EB40D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{7D8353FC-5F88-43D5-924A-A3E2CD8E6228}.Release|x64.Build.0 = Release|Any CPU
 		{7D8353FC-5F88-43D5-924A-A3E2CD8E6228}.Release|x86.ActiveCfg = Release|Any CPU
 		{7D8353FC-5F88-43D5-924A-A3E2CD8E6228}.Release|x86.Build.0 = Release|Any CPU
+		{BDD9100B-8E72-401D-9D42-ABF0F3EB40D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDD9100B-8E72-401D-9D42-ABF0F3EB40D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDD9100B-8E72-401D-9D42-ABF0F3EB40D6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BDD9100B-8E72-401D-9D42-ABF0F3EB40D6}.Debug|x64.Build.0 = Debug|Any CPU
+		{BDD9100B-8E72-401D-9D42-ABF0F3EB40D6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BDD9100B-8E72-401D-9D42-ABF0F3EB40D6}.Debug|x86.Build.0 = Debug|Any CPU
+		{BDD9100B-8E72-401D-9D42-ABF0F3EB40D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDD9100B-8E72-401D-9D42-ABF0F3EB40D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDD9100B-8E72-401D-9D42-ABF0F3EB40D6}.Release|x64.ActiveCfg = Release|Any CPU
+		{BDD9100B-8E72-401D-9D42-ABF0F3EB40D6}.Release|x64.Build.0 = Release|Any CPU
+		{BDD9100B-8E72-401D-9D42-ABF0F3EB40D6}.Release|x86.ActiveCfg = Release|Any CPU
+		{BDD9100B-8E72-401D-9D42-ABF0F3EB40D6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
