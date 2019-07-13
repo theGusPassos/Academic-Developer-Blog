@@ -12,6 +12,10 @@ module.exports = (env) => {
         context: __dirname,
         resolve: { extensions: [ '.js', '.ts' ] },
         entry: { 'main': './ClientApp/boot.ts' },
+        watch: isDevBuild,
+        watchOptions: {
+            poll: isDevBuild ? 1000 : false
+        },
         module: {
             rules: [
                 { test: /\.vue\.html$/, include: /ClientApp/, loader: 'vue-loader', options: { loaders: { js: 'awesome-typescript-loader?silent=true' } } },

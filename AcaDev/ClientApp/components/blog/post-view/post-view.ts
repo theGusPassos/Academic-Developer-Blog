@@ -1,6 +1,7 @@
 ﻿import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { IPost, IComment } from '../../../interfaces/post';
+import axios from 'axios';
 
 @Component({
     components: {
@@ -8,27 +9,32 @@ import { IPost, IComment } from '../../../interfaces/post';
     }
 })
 export default class BlogComponent extends Vue {
+    loading: boolean = false;
+    error: boolean = false;
+
     post: IPost = {} as IPost;
     comments: IComment[] = [];
 
     mounted() {
-        this.fetchPosts();
+        var post_title = this.$route.params.title;
+        this.fetchPost(post_title);
     }
 
-    fetchPosts() {
-        this.comments =
-            [
-                { id: 1, author: 'Batman', content: 'Asduhasdhuf asudfha dhashdf ausdhf ausdf', date: new Date() },
-                { id: 2, author: 'Superman', content: 'Asduhasdhuf asudfha dhashdf ausdhf ausdf', date: new Date() },
-            ];
-
-        // mocked posts
-        this.post =
-        {
-            id: 1, title: 'Trying to Creating new Stuff IV', date: new Date(), author: 'Gustavo Passos', tags: ['.net core', 'bootstrap'], content: 'Ullamco enim cillum nostrud officia tempor. Nostrud do id laboris eu id fugiat aliquip laboris aute veniam sint aute. Sunt ad sint consectetur cillum duis adipisicing sit id duis.',
-            comments: this.comments
-            };
-
-        console.log(this.comments);
+    fetchPost(title: string) {
+        axios.get('/api/posts?title=' + title)
+            .then(response => {
+                if (response.status === 200) {
+                    this.post = <IPost>response.data;
+                    this.loading = false;
+                }
+                else {
+                    console.error('Post API call status code: ' + response.status);
+                    this.error = true;
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                this.error = true;
+            }); 
     }
 }

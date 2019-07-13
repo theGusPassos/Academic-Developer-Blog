@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace AcaDev.Persistance.Migrations
@@ -63,6 +61,8 @@ namespace AcaDev.Persistance.Migrations
                     b.Property<string>("Content");
 
                     b.Property<DateTime>("PublishDate");
+
+                    b.Property<string>("Title");
 
                     b.HasKey("Id");
 
