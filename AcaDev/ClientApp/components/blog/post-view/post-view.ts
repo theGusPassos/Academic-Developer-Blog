@@ -10,7 +10,10 @@ import axios from 'axios';
 })
 export default class BlogComponent extends Vue {
     loading: boolean = false;
+
     error: boolean = false;
+    errorCode: number = 404;
+    errorMessage: string = "Post not found";
 
     post: IPost = {} as IPost;
     comments: IComment[] = [];
@@ -25,16 +28,27 @@ export default class BlogComponent extends Vue {
             .then(response => {
                 if (response.status === 200) {
                     this.post = <IPost>response.data;
-                    this.loading = false;
+                    //this.loading = false;
                 }
                 else {
                     console.error('Post API call status code: ' + response.status);
                     this.error = true;
+                    this.errorCode = response.status;
+                    this.errorMessage = this.getErrorMessage(this.errorCode);
                 }
             })
             .catch(error => {
                 console.error(error);
                 this.error = true;
             }); 
+    }
+
+    getErrorMessage(code: number) {
+        if (code === 404) {
+            return "Sorry... Post not found =(";
+        }
+        else {
+            return "Sorry... This is an internal server, please try again later";
+        }
     }
 }

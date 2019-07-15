@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using AcaDev.Domain.Entities;
+using AcaDev.Domain.Services;
 using AcaDev.Persistance.DbContexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,7 @@ namespace AcaDev
             AppDbContext.ConnectionString = connectionString;
 
             services.AddDbContext<AppDbContext>();
+            services.AddSingleton<IPostService, PostService>();
 
             services.AddMvc();
         }

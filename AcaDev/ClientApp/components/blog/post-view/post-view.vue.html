@@ -1,8 +1,14 @@
 ﻿<template>
     <div>
-        <post-component 
-                        v-bind:post="post"
-                        />
+        <div v-if="loading" class="loading">
+            <img src="../../../../wwwroot/loading-icon.gif" />
+        </div>
+        <div v-else-if="error" class="error">
+            <span>{{ errorCode }}</span>
+            <span>{{ errorMessage }}</span>
+            <span><a href="">You can try searching the term {{ $route.params.title }}</a></span>
+        </div>
+        <post-component v-else v-bind:post="post" />
     </div>
 </template>
 

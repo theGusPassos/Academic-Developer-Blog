@@ -1,2 +1,32 @@
-﻿body {
+﻿.loading {
+    display: flex;
 }
+
+.loading img {
+    margin: 15% auto;
+    width: 45px;
+}
+
+.error {
+    width: 70%;
+    margin: 5% auto 0 auto;
+    text-align: center;
+}
+
+.error span {
+    display: block;
+}
+
+.error span:first-child {
+    font-size: 3em;
+}
+
+    .error span:nth-child(2) {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-bottom: 5%;
+    }
+
+    .error span:last-child {
+        font-size: 0.8em;
+    }

@@ -1,5 +1,6 @@
 ﻿using AcaDev.Attribute;
 using AcaDev.Domain.Entities;
+using AcaDev.Domain.Services;
 using AcaDev.Dtos;
 using AcaDev.Persistance.DbContexts;
 using Microsoft.AspNetCore.Mvc;
@@ -11,8 +12,11 @@ namespace AcaDev.Controllers
 {
     public class PostsController : BaseController<Post>
     {
-        public PostsController(AppDbContext dbContext) : base(dbContext)
-        { 
+        private readonly IPostService postService;
+
+        public PostsController(AppDbContext dbContext, IPostService postService) : base(dbContext)
+        {
+            this.postService = postService;
         }
 
         public override async Task<IActionResult> All()
@@ -40,10 +44,7 @@ namespace AcaDev.Controllers
         public async Task<IActionResult> GetByTitle([FromQuery] string title)
         {
             var post = await dbContext.Post
-                .Where(a => a.Title.ToLower()
-                    // Removes dots to avoid problems in the URL generation
-                    .Replace(".", string.Empty)
-                    .Replace(" ", string.Empty) == title.ToLower())
+                .Where(a => postService.TitleToUrlTitle(a.Title) == title.ToLower())
                 .FirstOrDefaultAsync();
 
             if (post == null) return NotFound();
