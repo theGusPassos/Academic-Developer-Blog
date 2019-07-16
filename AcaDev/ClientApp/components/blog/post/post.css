@@ -1,7 +1,6 @@
 ﻿
 .post-body {
-    margin: 5% 5%;
-    padding-top: 5%;
+    color: var(--post-text-color);
 }
 
 .post-header-container {
@@ -17,6 +16,7 @@
     font-size: 1.32em;
     font-weight: bold;
     text-align: center;
+    margin-bottom: 0;
 }
 
 .post-info {
@@ -30,7 +30,7 @@
     }
 
 .post-tags-container {
-    margin-top: 5%;
+    margin-top: 3%;
     display: flex;
 }
 
@@ -51,20 +51,11 @@
     }
 
 .post-content {
-    margin: 6% 0 12% 0;
-    font-size: 0.9em;
-}
-
-.comment-count {
-    font-size: 0.85em;
-    color: var(--second-color);
+    margin: 6% 0 0 0;
+    font-size: 1em;
 }
 
 @media (min-width: 766px) {
-    .post-body {
-        margin: 0 15%;
-    }
-    
     .post-title {
         font-size: 2em;
         max-width: 500px;

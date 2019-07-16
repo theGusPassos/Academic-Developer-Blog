@@ -45,6 +45,18 @@ namespace AcaDev.Controllers
         {
             var post = await dbContext.Post
                 .Where(a => postService.TitleToUrlTitle(a.Title) == title.ToLower())
+                .Include(a => a.Author)
+                .Include(a => a.Comments)
+                .Include(a => a.PostTags).ThenInclude(a => a.Tag)
+                .Select(a => new PostDto
+                {
+                    Title = a.Title,
+                    Author = a.Author.Name,
+                    Content = a.Content,
+                    PublishDate = a.PublishDate,
+                    Tags = a.PostTags.Select(b => b.Tag.Name).ToList(),
+                    Comments = a.Comments
+                })
                 .FirstOrDefaultAsync();
 
             if (post == null) return NotFound();

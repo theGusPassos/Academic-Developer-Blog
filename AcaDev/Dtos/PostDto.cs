@@ -11,5 +11,6 @@ namespace AcaDev.Dtos
         public string Author { get; set; }
         public DateTime PublishDate { get; set; }
         public List<string> Tags { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

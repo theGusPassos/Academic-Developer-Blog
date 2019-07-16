@@ -9,7 +9,7 @@ import axios from 'axios';
     }
 })
 export default class BlogComponent extends Vue {
-    loading: boolean = false;
+    loading: boolean = true;
 
     error: boolean = false;
     errorCode: number = 404;
@@ -28,7 +28,7 @@ export default class BlogComponent extends Vue {
             .then(response => {
                 if (response.status === 200) {
                     this.post = <IPost>response.data;
-                    //this.loading = false;
+                    this.loading = false;
                 }
                 else {
                     console.error('Post API call status code: ' + response.status);
