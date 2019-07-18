@@ -70,7 +70,7 @@
         text-align: center;
     }
 
-    .navigation ul li {
+    .navigation ul li:first-child {
         margin: 5% 0;
     }
 
@@ -130,7 +130,7 @@
         }
 
             .navigation ul li {
-                margin: auto;
+                margin: auto !important;
             }
 
             .navigation ul li a {
