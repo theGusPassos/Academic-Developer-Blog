@@ -13,10 +13,13 @@ namespace AcaDev.Controllers
     public class PostsController : BaseController<Post>
     {
         private readonly IPostService postService;
+        private readonly ICommentService commentService;
 
-        public PostsController(AppDbContext dbContext, IPostService postService) : base(dbContext)
+        public PostsController(AppDbContext dbContext, IPostService postService,
+            ICommentService commentService) : base(dbContext)
         {
             this.postService = postService;
+            this.commentService = commentService;
         }
 
         public override async Task<IActionResult> All()
@@ -26,6 +29,7 @@ namespace AcaDev.Controllers
                 .Include(a => a.PostTags).ThenInclude(a => a.Tag)
                 .Select(a => new PostDto
                 {
+                    Id = a.Id,
                     Title = a.Title,
                     Author = a.Author.Name,
                     Content = a.Content,
@@ -50,6 +54,7 @@ namespace AcaDev.Controllers
                 .Include(a => a.PostTags).ThenInclude(a => a.Tag)
                 .Select(a => new PostDto
                 {
+                    Id = a.Id,
                     Title = a.Title,
                     Author = a.Author.Name,
                     Content = a.Content,
@@ -62,6 +67,22 @@ namespace AcaDev.Controllers
             if (post == null) return NotFound();
 
             return Ok(post);
+        }
+
+        [HttpPost]
+        [Route("{id}/comment")]
+        public async Task<IActionResult> PostComment([FromBody] CommentDto commentDto, [FromRoute] int id)
+        {
+            var comment = commentDto.ToComment(id);
+            if (commentService.IsValidComment(comment))
+            {
+                await dbContext.Comment.AddAsync(comment);
+                await dbContext.SaveChangesAsync();
+
+                return Ok(comment);
+            }
+
+            return BadRequest();
         }
     }
 }

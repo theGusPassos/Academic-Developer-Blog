@@ -2,6 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import { IPost, IComment } from '../../../interfaces/post';
 import axios from 'axios';
+import moment from 'moment';
 
 @Component({
     components: {
@@ -18,6 +19,14 @@ export default class BlogComponent extends Vue {
     post: IPost = {} as IPost;
     comments: IComment[] = [];
 
+    // comment form
+    username: string = "";
+    commentContent: string = "";
+    postClicked: boolean = false;
+
+    commentError: string = "";
+    commentFormError: boolean = false;
+
     mounted() {
         var post_title = this.$route.params.title;
         this.fetchPost(post_title);
@@ -26,29 +35,71 @@ export default class BlogComponent extends Vue {
     fetchPost(title: string) {
         axios.get('/api/posts?title=' + title)
             .then(response => {
+                this.loading = false;
+
                 if (response.status === 200) {
                     this.post = <IPost>response.data;
-                    this.loading = false;
+                    // using an outside property to allow vue binding
+                    this.comments = this.post.comments;
                 }
                 else {
-                    console.error('Post API call status code: ' + response.status);
-                    this.error = true;
-                    this.errorCode = response.status;
-                    this.errorMessage = this.getErrorMessage(this.errorCode);
+                    this.setError(response.status);
                 }
             })
             .catch(error => {
-                console.error(error);
-                this.error = true;
+                this.setError(500);
             }); 
+    }
+
+    setError(code: number) {
+        this.error = true;
+        this.errorCode = code;
+        this.errorMessage = this.getErrorMessage(code);
     }
 
     getErrorMessage(code: number) {
         if (code === 404) {
-            return "Sorry... Post not found =(";
+            return 'Sorry... Post not found =(';
         }
         else {
-            return "Sorry... This is an internal server, please try again later";
+            return 'Sorry... This is an internal server, please try again later';
         }
+    }
+
+    canPost(): boolean {
+        return this.username !== "" && this.commentContent !== "";
+    }
+
+    postComment() {
+        this.postClicked = true;
+
+        axios.post('api/posts/' + this.post.id + '/comment', {
+            username: this.username,
+            content: this.commentContent
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    this.comments.push(<IComment>response.data);
+                    this.resetCommentForm();
+                }
+                else {
+                    this.commentFormError = true;
+                    this.commentError = response.data.error;
+                }
+            })
+            .catch(exeption => {
+                this.commentFormError = true;
+                this.commentError = "Error while posting your comment, please try again later.";
+            });
+    }
+
+    resetCommentForm() {
+        this.postClicked = false;
+        this.username = "";
+        this.commentContent = "";
+    }
+
+    getFormatedDate(date: any) {
+        return moment(date).format('MM/DD/YYYY hh:mm');
     }
 }

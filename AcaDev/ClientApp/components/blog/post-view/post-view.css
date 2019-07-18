@@ -60,6 +60,11 @@
     min-height: 45px;
 }
 
+.post-required-error {
+    color: var(--second-color);
+    font-size: 0.9em;
+}
+
 .post-button {
     margin-top: 1%;
 }
@@ -83,12 +88,16 @@
     color: var(--second-color);
 }
 
+.comment-display {
+    margin-bottom: 3%;
+}
+
 .comment-display span {
     display: block;
 }
 
-.comment-display span:last-child {
-    margin-top: 2%;
+.comment-display span:nth-child(2) {
+    font-size: 0.8em;
 }
 
 @media (min-width: 766px) {

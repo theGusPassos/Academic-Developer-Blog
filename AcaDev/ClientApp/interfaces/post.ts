@@ -6,6 +6,7 @@ export interface IPost {
     author: string;
     date: Date;
     tags: string[];
+    comments: IComment[];
 }
 
 export interface IComment {

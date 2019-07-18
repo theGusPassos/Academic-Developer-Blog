@@ -30,6 +30,7 @@ namespace AcaDev
 
             services.AddDbContext<AppDbContext>();
             services.AddSingleton<IPostService, PostService>();
+            services.AddSingleton<ICommentService, CommentService>();
 
             services.AddMvc();
         }
