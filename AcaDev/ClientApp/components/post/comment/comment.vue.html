@@ -1,0 +1,32 @@
+﻿<template>
+    <section class="comment">
+        <span class="author">{{ comment.author }}</span>
+        <span class="date">{{ getFormatedDate(comment.date) }}</span>
+        <span class="content">{{ comment.content }}</span>
+    </section>
+</template>
+
+<style>
+    .comment {
+        margin: 1% 0 3% 0;
+    }
+
+        .comment span {
+            display: block;
+        }
+
+    .author {
+        font-weight: bold;
+    }
+
+    .date {
+        font-size: 0.8em;
+    }
+
+    .content {
+        margin-top: 2%;
+        line-height: 1.4;
+    }
+</style>
+
+<script src="./comment.ts"></script>

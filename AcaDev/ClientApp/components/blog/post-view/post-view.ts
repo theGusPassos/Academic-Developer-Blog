@@ -6,7 +6,8 @@ import moment from 'moment';
 
 @Component({
     components: {
-        PostComponent: require('../post/post.vue.html')
+        Post: require('../post/post.vue.html'),
+        CommentSection: require('../../post/comment-section/comment-section.vue.html')
     }
 })
 export default class BlogComponent extends Vue {
@@ -18,14 +19,6 @@ export default class BlogComponent extends Vue {
 
     post: IPost = {} as IPost;
     comments: IComment[] = [];
-
-    // comment form
-    username: string = "";
-    commentContent: string = "";
-    postClicked: boolean = false;
-
-    commentError: string = "";
-    commentFormError: boolean = false;
 
     mounted() {
         var post_title = this.$route.params.title;
@@ -64,42 +57,5 @@ export default class BlogComponent extends Vue {
         else {
             return 'Sorry... This is an internal server, please try again later';
         }
-    }
-
-    canPost(): boolean {
-        return this.username !== "" && this.commentContent !== "";
-    }
-
-    postComment() {
-        this.postClicked = true;
-
-        axios.post('api/posts/' + this.post.id + '/comment', {
-            username: this.username,
-            content: this.commentContent
-        })
-            .then(response => {
-                if (response.status === 200) {
-                    this.comments.push(<IComment>response.data);
-                    this.resetCommentForm();
-                }
-                else {
-                    this.commentFormError = true;
-                    this.commentError = response.data.error;
-                }
-            })
-            .catch(exeption => {
-                this.commentFormError = true;
-                this.commentError = "Error while posting your comment, please try again later.";
-            });
-    }
-
-    resetCommentForm() {
-        this.postClicked = false;
-        this.username = "";
-        this.commentContent = "";
-    }
-
-    getFormatedDate(date: any) {
-        return moment(date).format('MM/DD/YYYY hh:mm');
     }
 }

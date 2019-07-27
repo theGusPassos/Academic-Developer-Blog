@@ -1,0 +1,66 @@
+﻿<template>
+    <form class="comment-form">
+        <span>Leave a comment:</span>
+
+        <input type="text" placeholder="name" v-model="username"/>
+        <textarea rows="2" v-model="commentContent" />
+
+        <span class="post-required-error" v-if="postClicked && !canPost()">
+            Please, type your name and the comment before posting it
+        </span>
+
+        <span class="post-required-error" v-if="comment-form-error">
+            {{ commentError }}
+        </span>
+
+        <div class="post-button">
+            <button type="button" v-on:click="postComment">Post</button>
+        </div>
+    </form>
+</template>
+
+<style>
+    .comment-form span {
+        font-weight: bold;
+        font-size: 0.8em;
+        display: block;
+    }
+
+    .comment-form input, .comment-form textarea {
+        border: 1px solid var(--second-color);
+        opacity: 0.65;
+        border-radius: 7px;
+        margin: 1% 0 0 0;
+        padding: 1%;
+        font-size: 0.85em;
+    }
+
+    .comment-form textarea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+        min-height: 45px;
+        font-family: Verdana;
+    }
+
+    .post-required-error {
+        color: var(--second-color);
+        font-size: 0.9em;
+    }
+
+    .post-button {
+        margin-top: 1%;
+    }
+
+    .post-button button {
+        float: right;
+        background-color: var(--second-color);
+        border: none;
+        border-radius: 5px;
+        min-width: 100px;
+        font-weight: bold;
+        color: #fff;
+    }
+</style>
+
+<script src="./comment-form.ts"></script>

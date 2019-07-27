@@ -9,40 +9,8 @@
             <span><a href="">You can try searching the term {{ $route.params.title }}</a></span>
         </div>
 
-        <post-component v-else v-bind:post="post" />
-
-        <div class="comment-margin">
-            <form class="leave-comment">
-                <span>Leave a comment:</span>
-
-                <input type="text" placeholder="name" v-model="username"/>
-                <textarea rows="2" v-model="commentContent" />
-
-                <span class="post-required-error" v-if="postClicked && !canPost()">
-                    Please, type your name and the comment before posting it
-                </span>
-
-                <span class="post-required-error" v-if="comment-form-error">
-                    {{ commentError }}
-                </span>
-
-                <div class="post-button">
-                    <button type="button" v-on:click="postComment">Post</button>
-                </div>
-            </form>
-
-            <section class="comments">
-                <span class="comment-count">
-                    {{ post.comments.length }} comment{{ post.comments.length > 1 ? 's' : '' }}
-                </span>
-
-                <div class="comment-display" v-for="comment in comments">
-                    <span><b>{{ comment.author }}</b></span>
-                    <span>{{ getFormatedDate(comment.date) }}</span>
-                    <span>{{ comment.content }}</span>
-                </div>
-            </section>
-        </div>
+        <post v-else v-bind:post="post" />
+        <comment-section v-bind:comments="comments" v-bind:post-id="post.id" class="comment-margin"/>
     </div>
 </template>
 

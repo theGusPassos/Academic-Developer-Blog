@@ -2,10 +2,7 @@
 import { Component } from 'vue-property-decorator';
 
 @Component({
-    props: ['post'],
-    components: {
-        CommentComponent: require('./comment/comment.vue.html')
-    }
+    props: ['post']
 })
 export default class PostComponent extends Vue {
 }

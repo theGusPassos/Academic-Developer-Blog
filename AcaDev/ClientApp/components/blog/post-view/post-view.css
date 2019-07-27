@@ -38,74 +38,7 @@
 .comment-margin {
     margin-top: 5%;
 }
- 
-.leave-comment span {
-    font-weight: bold;
-    font-size: 0.8em;
-    display: block;
-}
 
-.leave-comment input, .leave-comment textarea {
-    border: 1px solid var(--second-color);
-    opacity: 0.65;
-    border-radius: 7px;
-    margin: 1% 0 0 0;
-    padding: 1%;
-    font-size: 0.85em;
-}
-
-    .leave-comment textarea {
-        width: 100%;
-        max-width: 100%;
-        min-width: 100%;
-        min-height: 45px;
-        font-family: Verdana;
-    }
-
-.post-required-error {
-    color: var(--second-color);
-    font-size: 0.9em;
-}
-
-.post-button {
-    margin-top: 1%;
-}
-
-.post-button button {
-    float: right;
-    background-color: var(--second-color);
-    border: none;
-    border-radius: 5px;
-    min-width: 100px;
-    font-weight: bold;
-    color: #fff;
-}
-
-.comments {
-    margin-top: 5%;
-}
-
-.comment-count {
-    font-size: 0.85em;
-    color: var(--second-color);
-}
-
-.comment-display {
-    margin: 1% 0 3% 0;
-}
-
-    .comment-display span {
-        font-size: 0.9em;
-        display: block;
-    }
-
-        .comment-display span:nth-child(2) {
-            font-size: 0.7em;
-        }
-
-    .comment-display span:nth-child(3) {
-        margin: 1% 0;
-    }
 
 @media (min-width: 766px) {
     .content-width {

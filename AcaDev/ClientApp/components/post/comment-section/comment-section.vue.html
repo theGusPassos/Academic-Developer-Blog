@@ -1,0 +1,23 @@
+﻿<template>
+    <section class="comment-section">
+        <span class="comment-count">
+            {{ comments.length }} comment{{ comments.length > 1 ? 's' : '' }}
+        </span>
+
+        <comment v-for="comment in comments" v-bind:comment="comment" />
+        <comment-form :method="addComment"/>
+    </section>
+</template>
+
+<style>
+    .comment-section {
+        margin-top: 5%;
+    }
+
+    .comment-count {
+        font-size: 0.85em;
+        color: var(--second-color);
+    }
+</style>
+
+<script src="./comment-section.ts"></script>
