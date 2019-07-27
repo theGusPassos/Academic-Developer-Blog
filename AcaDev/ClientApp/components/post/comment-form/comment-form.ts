@@ -4,9 +4,7 @@ import { IComment } from '../../../interfaces/post';
 import axios from 'axios';
 
 @Component({
-    props: {
-        method: { type: Function }
-    }
+    props: ['postId']
 })
 export default class Comment extends Vue {
     username: string = "";
@@ -19,13 +17,13 @@ export default class Comment extends Vue {
     postComment() {
         this.postClicked = true;
 
-        axios.post('api/posts/' + this.post.id + '/comment', {
+        axios.post('api/posts/' + this.$props.postId + '/comment', {
             username: this.username,
             content: this.commentContent
         })
             .then(response => {
                 if (response.status === 200) {
-                    this.comments.push(<IComment>response.data);
+                    //this.comments.push(<IComment>response.data);
                     this.resetCommentForm();
                 }
                 else {

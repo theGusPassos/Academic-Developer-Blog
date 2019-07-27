@@ -5,7 +5,7 @@
         </span>
 
         <comment v-for="comment in comments" v-bind:comment="comment" />
-        <comment-form :method="addComment"/>
+        <comment-form v-bind:post-id="$props.postId" />
     </section>
 </template>
 

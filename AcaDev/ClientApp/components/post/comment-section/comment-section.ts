@@ -3,7 +3,7 @@ import { Component } from 'vue-property-decorator';
 import { IComment } from '../../../interfaces/post';
 
 @Component({
-    props: ['post-id', 'comments'],
+    props: ['postId', 'comments'],
     components: {
         Comment: require('../comment/comment.vue.html'),
         CommentForm: require('../comment-form/comment-form.vue.html')
