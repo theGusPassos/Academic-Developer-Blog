@@ -2,12 +2,12 @@
 .menu-background {
     background-color: var(--main-color);
     display: block;
+    padding: 3%;
 }
 
 .top-menu {
     display: flex;
     width: 100%;
-    padding: 3%;
 }
 
 .brand-div {
@@ -55,7 +55,7 @@
     max-height: 0;
     height: auto;
     width: 100%;
-    background-color: var(--background-color);
+    background-color: var(--main-color);
     transition: all .5s ease;
 }
 
@@ -78,7 +78,7 @@
             font-size: 1.1em;
             font-weight: bold;
             text-decoration: none;
-            color: var(--text-main-color);
+            color: #fff;
         }
 
             .navigation ul li a:hover {

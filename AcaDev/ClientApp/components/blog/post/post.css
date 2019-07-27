@@ -20,8 +20,7 @@
 }
 
 .post-info {
-    font-weight: bold;
-    font-size: 0.75em;
+    font-size: 0.7em;
     margin-top: 3%;
 }
 
@@ -38,6 +37,7 @@
     display: flex;
     margin: auto;
 }
+
     .post-tags div {
         background-color: var(--background-color);
         color: var(--second-color);
@@ -46,13 +46,14 @@
         margin: 0 5px;
     }
 
-    .post-tags div span {
-        margin: 10px;
-    }
+        .post-tags div span {
+            margin: 10px;
+        }
 
 .post-content {
     margin: 6% 0 0 0;
     font-size: 1em;
+    line-height: 1.4;
 }
 
 @media (min-width: 766px) {
@@ -62,15 +63,15 @@
     }
 
     .post-info {
-        font-size: 1em;
+        font-size: 0.8em;
     }
 
     .post-tags-container {
-        margin-top: 2%;
-        font-size: 1.2em;
+        margin-top: 1%;
+        font-size: 1em;
     }
 
     .post-content {
-        margin: 5% 0 7% 0;   
+        margin: 5% 0 7% 0;
     }
 }

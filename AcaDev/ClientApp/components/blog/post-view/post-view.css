@@ -38,10 +38,11 @@
 .comment-margin {
     margin-top: 5%;
 }
-
+ 
 .leave-comment span {
+    font-weight: bold;
+    font-size: 0.8em;
     display: block;
-    font-size: 0.85em;
 }
 
 .leave-comment input, .leave-comment textarea {
@@ -53,12 +54,13 @@
     font-size: 0.85em;
 }
 
-.leave-comment textarea {
-    width: 100%;
-    max-width: 100%;
-    min-width: 100%;
-    min-height: 45px;
-}
+    .leave-comment textarea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+        min-height: 45px;
+        font-family: Verdana;
+    }
 
 .post-required-error {
     color: var(--second-color);
@@ -89,16 +91,21 @@
 }
 
 .comment-display {
-    margin-bottom: 3%;
+    margin: 1% 0 3% 0;
 }
 
-.comment-display span {
-    display: block;
-}
+    .comment-display span {
+        font-size: 0.9em;
+        display: block;
+    }
 
-.comment-display span:nth-child(2) {
-    font-size: 0.8em;
-}
+        .comment-display span:nth-child(2) {
+            font-size: 0.7em;
+        }
+
+    .comment-display span:nth-child(3) {
+        margin: 1% 0;
+    }
 
 @media (min-width: 766px) {
     .content-width {
